@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "cross-env NODE_ENV=test npm run migrate:undo:all && npm run migrate && nyc --reporter=lcov --reporter=text mocha  --timeout 30000 --require babel-core/register --require babel-polyfill --exit './test/**/*.test.js'",
+        "test": "cross-env NODE_ENV=test npm run migrate:undo:all && npm run migrate && nyc --reporter=html --reporter=text mocha  --timeout 30000 --require babel-core/register --require babel-polyfill --exit './test/**/*.test.js' || true",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
         "start": "npm run migrate:undo:all && npm run migrate && node --require babel-core/register --require babel-polyfill ./src/server.js",
         "dev": "cross-env NODE_ENV=development nodemon --require babel-core/register --require babel-polyfill ./src/server.js",
@@ -19,6 +19,10 @@
     "author": "Nshimyumukiza Christian",
     "license": "ISC",
     "homepage": "",
+    "nyc": {
+        "sourceMap": false,
+        "instrument": false
+    },
     "dependencies": {
         "babel-core": "^6.26.3",
         "babel-polyfill": "^6.26.0",
