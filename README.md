@@ -45,7 +45,7 @@ Using Postman to access these endpoints
 | /api/v1/todos/            | GET     | Fetch all Todo Items | YES                     |
 | /api/v1/todos/            | POST    | Add new Todo item    | Yes                     |
 | /api/v1/todos/`<todo_id>` | GET     | Fetch One todo Item  | YES                     |
-| /api/v1/todos/`<todo_id>` | PUT     | update user info     | YES                     |
+| /api/v1/todos/`<todo_id>` | PUT     | update Item info     | YES                     |
 | /api/v1/todos/`<todo_id>` | DELETE  | Delete a Todo Item   | YES                     |
 
 ## Built With
