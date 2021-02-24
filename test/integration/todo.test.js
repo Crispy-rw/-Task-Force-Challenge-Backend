@@ -156,7 +156,7 @@ describe("POST Create a todo Item", () => {
             .set("Authorization", token)
             .end((err, res) => {
                 console.log(res.text);
-                res.should.have.status(400);
+                res.should.have.status(409);
                 res.should.be.an('object');
                 done();
             })

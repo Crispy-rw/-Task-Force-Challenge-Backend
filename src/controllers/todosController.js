@@ -36,7 +36,7 @@ class TodosController {
     // Check if Item aleady exists
     const checkItem = await TodoServices.getOne({ title });
 
-    if (checkItem) sendResult(response, 400, "Item Already Exists");
+    if (checkItem) sendResult(response, 409, "Item Already Exists");
     // Add new Item
     const newItem = await TodoServices.createItem({ title, description, priority, userId: request.user.id });
     // Send Response

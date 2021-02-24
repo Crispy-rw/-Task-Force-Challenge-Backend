@@ -3,10 +3,11 @@ import helmet from "helmet";
 import compression from "compression";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { serve, setup } from "swagger-ui-express";
+import swaggerDoc from "./utils/swagger.json";
 import routes from "./routes";
 import env from "dotenv";
 import morgan from "morgan";
-import { serve, setup } from "swagger-ui-express";
 
 const app = express();
 
@@ -34,7 +35,7 @@ app.get("/", (request, response) => {
 });
 
 app.use("/api/v1", routes);
-// app.use("/api/doc", serve, setup(swaggerDoc));
+app.use("/api/doc", serve, setup(swaggerDoc));
 
 app.use('*', (request, response) => {
   response.status(404).json({

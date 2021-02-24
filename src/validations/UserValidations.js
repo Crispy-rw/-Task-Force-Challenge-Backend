@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-
+import sendResult from '../utils/sendResult';
 /**
  * UserValidations module
  * 

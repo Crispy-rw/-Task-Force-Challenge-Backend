@@ -1,0 +1,451 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "Taskforce-challenge",
+        "description": "",
+        "contact": {
+            "email": "nshimyumukizachristian@gmail.com"
+        }
+    },
+    "basePath": "/api/v1",
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/auth/login": {
+            "post": {
+                "description": "",
+                "summary": "Login",
+                "tags": ["Users"],
+                "operationId": "Login",
+                "deprecated": false,
+                "produces": ["application/json"],
+                "consumes": ["application/x-www-form-urlencoded"],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": " User logged successfully",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "headers": {}
+                    },
+                    "401": {
+                        "description": "he email and/or password is invalid",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "description": "",
+                "summary": "Register",
+                "tags": ["Users"],
+                "operationId": "Register",
+                "deprecated": false,
+                "produces": ["application/json"],
+                "consumes": ["application/x-www-form-urlencoded"],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "confirmPassword",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": " Action was successful created",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "headers": {}
+                    },
+                    "409": {
+                        "description": "User Already exist",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/todos": {
+            "get": {
+                "description": "",
+                "summary": "Todos",
+                "tags": ["Todos"],
+                "operationId": "Todos",
+                "deprecated": false,
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "x-auth-token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Todo Items Found",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "headers": {}
+                    },
+                    "401": {
+                        "description": "You are not authorized to access this page",
+                        "headers": {}
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {}
+                    }
+                }
+            },
+            "post": {
+                "description": "",
+                "summary": "Create Todo",
+                "tags": ["Todos"],
+                "operationId": "CreateTodo",
+                "deprecated": false,
+                "produces": ["application/json"],
+                "consumes": ["application/x-www-form-urlencoded"],
+                "parameters": [
+                    {
+                        "name": "x-auth-token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "title",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "name": "priority",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true,
+                        "description": "",
+                        "enum": ["LOW", "MEDIUM", "HIGH"]
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "New Item Created",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Item Already Exists",
+                        "headers": {}
+                    },
+                    "401": {
+                        "description": "You are not authorized to access this page",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/todos/{todo_id}": {
+            "get": {
+                "description": "",
+                "summary": "Get one Todo",
+                "tags": ["Todos"],
+                "operationId": "GetoneTodo",
+                "deprecated": false,
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "todo_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "description": "ID of a specific todo to read"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data Found",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "headers": {}
+                    },
+                    "404": {
+                        "description": "Oops Todo Item not Found",
+                        "headers": {}
+                    },
+                    "401": {
+                        "description": "You are not authorized to access this page",
+                        "headers": {}
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {}
+                    }
+                }
+            },
+            "put": {
+                "description": "",
+                "summary": "Update Todo",
+                "tags": ["Todos"],
+                "operationId": "UpdateTodo",
+                "deprecated": false,
+                "produces": ["application/json"],
+                "consumes": ["application/x-www-form-urlencoded"],
+                "parameters": [
+                    {
+                        "name": "x-auth-token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "todo_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "description": "ID of todo to update"
+                    },
+                    {
+                        "name": "title",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "type": "string",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "name": "priority",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string",
+                        "description": "",
+                        "enum": ["LOW", "MEDIUM", "HIGH"]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Todo Item Updated",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "headers": {}
+                    },
+                    "401": {
+                        "description": "You are not authorized to access this page",
+                        "headers": {}
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {}
+                    }
+                }
+            },
+            "delete": {
+                "description": "",
+                "summary": "Delete Todo",
+                "tags": ["Todos"],
+                "operationId": "DeleteTodo",
+                "deprecated": false,
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "x-auth-token",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": ""
+                    },
+                    {
+                        "name": "todo_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "description": "ID of todo to delete"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Todo Item Deleted",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "headers": {}
+                    },
+                    "401": {
+                        "description": "You are not authorized to access this page",
+                        "headers": {}
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {}
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "LoginRequest": {
+            "title": "LoginRequest",
+            "example": {
+                "email": "crispy",
+                "password": "password"
+            },
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "required": ["email", "password"]
+        },
+        "RegisterRequest": {
+            "title": "RegisterRequest",
+            "example": {
+                "email": "crispy",
+                "password": "password",
+                "confirmPassword": "password",
+                "name": "crispy Clement"
+            },
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "confirmPassword": {
+                    "type": "string"
+                }
+            },
+            "required": ["email", "password", "name", "confirmPassword"]
+        },
+        "CreateTodoRequest": {
+            "title": "CreateTodoRequest",
+            "example": {
+                "title": "Item 1",
+                "description": "description",
+                "priority": "HIGH"
+            },
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "string"
+                }
+            },
+            "required": ["title", "description", "priority"]
+        },
+        "UpdateTodoRequest": {
+            "title": "UpdateTodoRequest",
+            "example": {
+                "title": "Item 2",
+                "description": "Description",
+                "priority": "HIGH"
+            },
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "string"
+                }
+            },
+            "required": ["title", "description", "priority"]
+        }
+    },
+    "tags": [
+        {
+            "name": "Todos",
+            "description": "Todo related endpoints"
+        },
+        {
+            "name": "Users",
+            "description": "Users related endpoints"
+        }
+    ]
+}
