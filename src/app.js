@@ -7,7 +7,6 @@ import routes from "./routes";
 import env from "dotenv";
 import morgan from "morgan";
 import { serve, setup } from "swagger-ui-express";
-import swaggerDoc from "../swagger.json";
 
 const app = express();
 

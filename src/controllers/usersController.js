@@ -20,7 +20,7 @@ class UsersController {
 
       const checkUser = await UserServices.getOne({ email });
 
-      if (checkUser) return sendResult(response, 401, "User Already exist");
+      if (checkUser) return sendResult(response, 409, "User Already exist");
 
       const newUser = await UserServices.createUser({
         email,
@@ -59,11 +59,11 @@ class UsersController {
 
       const checkUser = await UserServices.getOne({ email });
 
-      if (!checkUser) return sendResult(response, 400, 'The email and/or password is invalid');
+      if (!checkUser) return sendResult(response, 401, 'The email and/or password is invalid');
 
       const comfirmPass = helpers.comparePassword(password, checkUser.password);
 
-      if (!comfirmPass) return sendResult(response, 400, 'The email and/or password is invalid');
+      if (!comfirmPass) return sendResult(response, 401, 'The email and/or password is invalid');
 
       const {
         id, name
@@ -75,7 +75,7 @@ class UsersController {
         id, name, email, token
       };
 
-      return sendResult(response, 201, 'User logged successfully', data);
+      return sendResult(response, 200, 'User logged successfully', data);
 
     } catch (error) {
       return sendResult(response, 500, "Server Error");

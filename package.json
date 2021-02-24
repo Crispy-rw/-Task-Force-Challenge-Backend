@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "cross-env NODE_ENV=test npm run migrate:undo:all && npm run migrate && nyc --reporter=lcov --reporter=text mocha  --timeout 10000 --require babel-core/register --require babel-polyfill --exit './test/**/*.test.js'",
+        "test": "cross-env NODE_ENV=test npm run migrate:undo:all && npm run migrate && nyc --reporter=lcov --reporter=text mocha  --timeout 30000 --require babel-core/register --require babel-polyfill --exit './test/**/*.test.js'",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
         "start": "npm run migrate:undo:all && npm run migrate && node --require babel-core/register --require babel-polyfill ./src/server.js",
         "dev": "cross-env NODE_ENV=development nodemon --require babel-core/register --require babel-polyfill ./src/server.js",
@@ -24,6 +24,8 @@
         "babel-polyfill": "^6.26.0",
         "babel-preset-env": "^1.7.0",
         "bcryptjs": "^2.4.3",
+        "chai-like": "^1.1.1",
+        "chai-things": "^0.2.0",
         "compression": "^1.7.4",
         "cookie-parser": "^1.4.5",
         "cors": "^2.8.5",

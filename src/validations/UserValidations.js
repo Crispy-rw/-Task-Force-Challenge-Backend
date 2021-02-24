@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-import { onError, onServerError } from "../utils/response";
 
 /**
  * UserValidations module
