@@ -4,11 +4,11 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/Crispy-rw/-Task-Force-Challenge-Backend/badge.svg?branch=main)](https://coveralls.io/github/Crispy-rw/-Task-Force-Challenge-Backend?branch=main)
 
-TO-DO api is a simple api that lets you create unlimited tasks which can you to plan, track and get more tasks done.
+TO-DO api is a simple api that lets you create unlimited tasks which can help you to plan, track and get more tasks done.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
