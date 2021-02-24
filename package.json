@@ -1,0 +1,59 @@
+{
+    "name": "taskforce-todo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "cross-env NODE_ENV=test npm run migrate:undo:all && npm run migrate && nyc --reporter=lcov --reporter=text mocha  --timeout 10000 --require babel-core/register --require babel-polyfill --exit './test/**/*.test.js'",
+        "coverage": "nyc report --reporter=text-lcov | coveralls",
+        "start": "npm run migrate:undo:all && npm run migrate && node --require babel-core/register --require babel-polyfill ./src/server.js",
+        "dev": "cross-env NODE_ENV=development nodemon --require babel-core/register --require babel-polyfill ./src/server.js",
+        "migrate": "sequelize db:migrate",
+        "migrate:undo": "sequelize db:migrate:undo",
+        "migrate:undo:all": "sequelize db:migrate:undo:all"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "author": "Nshimyumukiza Christian",
+    "license": "ISC",
+    "homepage": "",
+    "dependencies": {
+        "babel-core": "^6.26.3",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "bcryptjs": "^2.4.3",
+        "compression": "^1.7.4",
+        "cookie-parser": "^1.4.5",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "export-to-csv": "^0.2.1",
+        "express": "^4.17.1",
+        "faker": "^5.4.0",
+        "helmet": "^4.1.1",
+        "joi": "^17.2.1",
+        "jsonwebtoken": "^8.5.1",
+        "moment": "^2.29.1",
+        "morgan": "^1.10.0",
+        "pg": "^8.5.1",
+        "sequelize": "^6.3.5",
+        "sequelize-cli": "^6.2.0",
+        "supertest": "^6.1.3",
+        "swagger-ui-express": "^4.1.6",
+        "winston": "^3.3.3",
+        "yup": "^0.32.0"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-plugin-istanbul": "^6.0.0",
+        "chai": "^4.3.0",
+        "chai-http": "^4.3.0",
+        "coveralls": "^3.1.0",
+        "cross-env": "^7.0.3",
+        "mocha": "^8.3.0",
+        "node-mocks-http": "^1.10.1",
+        "nodemon": "^2.0.4",
+        "nyc": "^15.1.0"
+    }
+}
