@@ -17,9 +17,5 @@ describe('helper functions', () => {
         expect(helpers.createToken(1, 'lll@gmail.com', '')).to.not.equal(undefined);
         done();
     });
-    // it('should return a jwt token when called', (done) => {
-    //     expect(userController).to.haveOwnProperty('signup');
-    //     done();
-    // });
 });
 

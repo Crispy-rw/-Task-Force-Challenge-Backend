@@ -19,10 +19,6 @@
     "author": "Nshimyumukiza Christian",
     "license": "ISC",
     "homepage": "",
-    "nyc": {
-        "sourceMap": false,
-        "instrument": false
-    },
     "dependencies": {
         "babel-core": "^6.26.3",
         "babel-polyfill": "^6.26.0",
