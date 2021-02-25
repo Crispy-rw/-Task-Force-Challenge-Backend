@@ -11,4 +11,4 @@ const onListen = () => {
   }
 };
 
-export default server.listen(PORT, onListen());
+export default server.listen(PORT, '0.0.0.0', onListen());

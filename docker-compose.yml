@@ -1,0 +1,74 @@
+version: '3.7'
+services:
+    database:
+        container_name: todo-database
+        image: postgres:11-alpine
+        tty: true
+        environment:
+            POSTGRES_USER: ${DB_DEVELOPMENT_USER}
+            POSTGRES_DB: ${DB_DEVELOPMENT_NAME}
+            POSTGRES_PASSWORD: ${DB_DEVELOPMENT_PASSWORD}
+            PGDATA: /tmp
+        volumes:
+            - db-data:/var/lib/postgresql
+        networks:
+            - backend
+        restart: unless-stopped
+
+    test-database:
+        container_name: todo-test-database
+        image: postgres:11-alpine
+        tty: true
+        environment:
+            POSTGRES_USER: ${DB_TEST_USER}
+            POSTGRES_DB: ${DB_TEST_NAME}
+            POSTGRES_PASSWORD: ${DB_TEST_PASSWORD}
+            PGDATA: /tmp
+        volumes:
+            - db-data:/var/lib/postgresql
+        restart: unless-stopped
+
+    api-server:
+        container_name: todo-api
+        build: .
+        image: todo-api
+        tty: true
+        environment:
+            NODE_ENV: development
+            PORT: 5001
+        command: ['npm', 'run', 'dev']
+        volumes:
+            - .:/usr/src/app
+            - /usr/src/app/node_modules/*
+        ports:
+            - '5001:5000'
+        networks:
+            - backend
+        depends_on:
+            - database
+        restart: unless-stopped
+
+    test-api-server:
+        container_name: todo-api-test
+        build: .
+        image: todo-api
+        tty: true
+        environment:
+            NODE_ENV: test
+        command: ['npm', 'run', 'test']
+        volumes:
+            - .:/usr/src/app
+            - /usr/src/app/node_modules
+        depends_on:
+            - test-database
+        restart: 'no'
+
+networks:
+    backend:
+        name: carpool-backend
+        driver: bridge
+
+volumes:
+    db-data:
+        name: carpool-database
+        driver: local
