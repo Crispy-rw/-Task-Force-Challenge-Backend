@@ -1,14 +1,14 @@
-**This is a README.md**
+**TO-DO api**
 
 [![Build Status](https://travis-ci.com/Crispy-rw/-Task-Force-Challenge-Backend.svg?branch=main)](https://travis-ci.com/Crispy-rw/-Task-Force-Challenge-Backend)
 
 [![Coverage Status](https://coveralls.io/repos/github/Crispy-rw/-Task-Force-Challenge-Backend/badge.svg?branch=main)](https://coveralls.io/github/Crispy-rw/-Task-Force-Challenge-Backend?branch=main)
 
-TO-DO api is a simple api that lets you create unlimited tasks which can you to plan, track and get more tasks done.
+TO-DO api is a simple api that lets you create unlimited tasks which can help you to plan, track and get more tasks done.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
@@ -40,12 +40,12 @@ Using Postman to access these endpoints
 
 | Endpoint                  | Methods | Functionalities      | Authentication required |
 | ------------------------- | ------- | -------------------- | ----------------------- |
-| /api/v1/auth/login        | POST    | Register a new User  | No                      |
-| /api/v1/auth/signup       | POST    | Login for a User     | NO                      |
+| /api/v1/auth/login        | POST    | Login a  User        | No                      |
+| /api/v1/auth/register     | POST    | Register for a User  | NO                      |
 | /api/v1/todos/            | GET     | Fetch all Todo Items | YES                     |
 | /api/v1/todos/            | POST    | Add new Todo item    | Yes                     |
 | /api/v1/todos/`<todo_id>` | GET     | Fetch One todo Item  | YES                     |
-| /api/v1/todos/`<todo_id>` | PUT     | update user info     | YES                     |
+| /api/v1/todos/`<todo_id>` | PUT     | update Item info     | YES                     |
 | /api/v1/todos/`<todo_id>` | DELETE  | Delete a Todo Item   | YES                     |
 
 ## Built With
