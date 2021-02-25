@@ -39,7 +39,18 @@ Say what the step will be
 -   Run `npm install` to install node packages
 -   RUN `npm run test`
 
-## Running up the appication
+## Running swagger documentation
+
+-   Clone the repository
+-   Copy .env.example to .env then correct change the corresponding variables
+-   Run `npm install` to install node packages
+-   RUN `npm run dev` to start the appp in development
+-   browse to `localhost:[PORT]/api-doc`
+
+## Running up the appication Using Docker
+
+-   Clone the repository
+-   Copy .env.example to .env then correct change the corresponding variables
 
 To spin up all containers and running the application, use `docker-compose up`. After pulling new changes, containers might be deprecated and you are required to execute `docker-compose up --build` for spinning up containers and run the application or `docker-compose build --no-cache` for re/building new containers with no cache.
 
