@@ -34,6 +34,19 @@ Say what the step will be
 
 ## Running the tests
 
+-   Clone the repository
+-   Copy .env.example to .env then correct change the corresponding variables
+-   Run `npm install` to install node packages
+-   RUN `npm run test`
+
+## Running up the appication
+
+To spin up all containers and running the application, use `docker-compose up`. After pulling new changes, containers might be deprecated and you are required to execute `docker-compose up --build` for spinning up containers and run the application or `docker-compose build --no-cache` for re/building new containers with no cache.
+
+To run a migration/seed, conenct first to the api-server erver by execuring `docker-compose run --rm api-server sh`. Once you are in, you can run any sequelize command such as `npx sequelize db:migrate` and then start the app using `npm run dev`.
+
+For better testing the application, spin up the api-testing server by execuring `docker-compose run --rm test-api-server sh`. Once you are in, you can execute any testing command such as ``npm run test`. It is not recommended to test under carpool-api container.
+
 ### Endpoints
 
 Using Postman to access these endpoints
